@@ -216,4 +216,16 @@ router.get('/user/profile',
     // }
 )
 
+router.get('/user/user_data', function(req, res) {
+
+  if (req.user === undefined) {
+      // The user is not logged in
+      res.json({});
+  } else {
+      res.json({
+          user: req.user
+      });
+  }
+});
+
 module.exports = router

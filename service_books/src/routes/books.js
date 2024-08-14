@@ -44,7 +44,7 @@ router.post('/books/create', (req, res) => {
 })
 
 // 3. получить книгу по ID
-router.get('/books/:id', async(req, res) => {
+router.get('/books/:id', async(req, res) => { 
 
     // получаем объект книги, если запись не найдена, вернём Code: 404
     const {books} = stor
@@ -67,11 +67,25 @@ router.get('/books/:id', async(req, res) => {
         console.log(e)
     }
 
+    let notes = [
+        {
+            text: 'Комментарий 1',
+            username: 'yuriy',
+            displayName: "Юрий"
+        },
+        {
+            text: 'Комментарий 2',
+            username: 'evgeniy',
+            displayName: "Евгений"
+        }      
+    ]
+
     res.render("books/view", {
         title: "Просмотреть карточку книги",
         user: req.user,
         book: books[idx],
-        cnt: cnt
+        cnt: cnt,
+        notes: notes
     })
 })
 
